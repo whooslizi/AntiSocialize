@@ -143,6 +143,27 @@ header {
   display: block;
 }
 
+.preset-btn {
+  flex: 1;
+  background: #2a2a2a;
+  color: white;
+  border: 1px solid #444;
+  padding: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.preset-btn:hover {
+  background: #444;
+}
+
+.preset-btn.active {
+  background: #ff2d2d;
+  border-color: #ff2d2d;
+}
+
 .start-btn {
   width: 100%;
   background: #ff2d2d;
