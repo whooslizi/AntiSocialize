@@ -182,13 +182,6 @@ function updateStats(type) {
   });
 }
 
-const PUNISHMENT_MESSAGES = [
-  "KHONG QUA MON GIAI TICH THI KHONG DUOC XEM REELS",
-  "SAI ROI! May nghi Giai tich de a?",
-  "TRUOT! Them 30 giay suy nghi ve cuoc doi di",
-  "WRONG! GPA -0.5",
-  "May khong xung dang vao mang xa hoi",
-];
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);
