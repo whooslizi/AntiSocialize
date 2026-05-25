@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const modeInfinite = document.getElementById('mode-infinite');
   const modeTimer = document.getElementById('mode-timer');
+  const timerSettings = document.getElementById('timer-settings');
   const timerInput = document.getElementById('timer-input');
 
   function setMode(mode) {
@@ -45,9 +46,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     currentMode = mode;
     modeInfinite.classList.toggle('active', mode === 'infinite');
     modeTimer.classList.toggle('active', mode === 'timer');
-    timerInput.classList.toggle('visible', mode === 'timer');
+    timerSettings.style.display = mode === 'timer' ? 'block' : 'none';
     chrome.storage.local.set({ blockingMode: mode });
   }
+
+  const presetBtns = document.querySelectorAll('.preset-btn');
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      timerInput.value = e.target.getAttribute('data-time');
+      presetBtns.forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+    });
+  });
+
+  timerInput.addEventListener('input', () => {
+    presetBtns.forEach(b => b.classList.remove('active'));
+  });
 
   modeInfinite.addEventListener('click', () => setMode('infinite'));
   modeTimer.addEventListener('click', () => setMode('timer'));
